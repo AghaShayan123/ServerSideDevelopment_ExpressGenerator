@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const authenticate = require('../authenticate');
 const multer = require('multer');
 
@@ -24,7 +23,7 @@ const upload = multer({ storage: storage, fileFilter: imageFileFilter});
 
 const uploadRouter = express.Router();
 
-uploadRouter.use(bodyParser.json());
+uploadRouter.use(express.json());
 
 uploadRouter.route('/')
 .get(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
